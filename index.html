@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+   <meta charset="UTF-8">
+
+    <script>
+        if (sessionStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <title>Giới thiệu thành viên nhóm</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f0f6ff;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 35px 20px;
+            background: linear-gradient(90deg, #0d47a1, #1976d2);
+            color: white;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            margin: 25px auto 0;
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+            justify-items: center;
+        }
+
+        .member {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            text-align: center;
+            transition: 0.3s;
+            width: 100%;
+            max-width: 340px;
+            border: 2px solid #e3f2fd;
+            cursor: pointer;
+        }
+
+        .member:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+            border-color: #1976d2;
+        }
+
+        .member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid #1976d2;
+        }
+
+        .info {
+            padding: 18px;
+        }
+
+        .info h3 {
+            margin: 10px 0 6px;
+            font-size: 18px;
+            color: #0d47a1;
+            font-weight: 600;
+        }
+
+        .info p {
+            margin: 6px 0;
+            font-size: 14.5px;
+            color: #333;
+        }
+
+        .info p:nth-child(2) {
+            font-weight: 600;
+            color: #1976d2;
+        }
+
+        .member:nth-child(10) {
+            grid-column: 2 / 3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            background: #0d47a1;
+            color: white;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .overlay.active {
+            display: flex;
+        }
+
+        .zoom-card {
+            width: 380px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            animation: zoomIn 0.3s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .zoom-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .zoom-card .info {
+            padding: 22px;
+            text-align: center;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.6); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: repeat(2, 1fr); }
+            .member:nth-child(10) { grid-column: auto; }
+        }
+
+        @media (max-width: 600px) {
+            .container { grid-template-columns: 1fr; }
+        }
+
+        /* BẢNG THÔNG TIN */
+        table {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            font-size: 15px;
+        }
+
+        table th {
+            background: #0d47a1;
+            color: white;
+            font-weight: 600;
+        }
+
+        table tr:nth-child(even) {
+            background: #f5f9ff;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>GIỚI THIỆU THÀNH VIÊN NHÓM 5 LỚP 12M</h1>
+
+<div class="video-wrapper" id="videoBox">
+    <video controls>
+        <source src="video/intro2.mp4" type="video/mp4">
+    </video>
+</div>
+
+<!-- BẢNG 11 HÀNG - 3 CỘT -->
+<table>
+    <tr>
+        <th>Họ và tên</th>
+        <th>Nhiệm vụ</th>
+        <th>Trạng thái công việc</th>
+    </tr>
+    <tr><td>Đào Gia Bảo Ngọc</td><td>Trưởng nhóm</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Bùi Mạnh Trường</td><td>Phó nhóm</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Phùng Ngọc Tuấn Tú</td><td>Nhiếp ảnh & Thiết kế</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Đặng Kim Ngân</td><td>Thư kí</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Phan Thị Phương Thuỷ</td><td>Thành viên</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Nguyễn Kim Ngân</td><td>Thành viên</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Trần Nam Phong</td><td>Thành viên</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Nguyễn Minh Trí</td><td>Thành viên</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Vũ Đức Việt</td><td>Thành viên</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Đoàn Nguyễn Thuỳ Trang</td><td>Thành viên</td><td>Hoàn thành tốt</td></tr>
+</table>
+
+<!-- DANH SÁCH THÀNH VIÊN -->
+<div class="container">
+    <div class="member"><img src="img/tv1.jpg"><div class="info"><h3>Đào Gia Bảo Ngọc</h3><p>Trưởng nhóm</p><p>Email: daogiabaongochd2008@gmail.com</p><p>SĐT: 0349 794 188</p></div></div>
+    <div class="member"><img src="img/tv2.jpg"><div class="info"><h3>Bùi Mạnh Trường</h3><p>Phó nhóm</p><p>Email: bmt19102008@gmail.com</p><p>SĐT: 0979 981 652</p></div></div>
+    <div class="member"><img src="img/tv9.jpg"><div class="info"><h3>Phùng Ngọc Tuấn Tú</h3><p>Nhiếp ảnh & Thiết kế</p><p>Email: cattertu310308@gmail.com</p><p>SĐT: 0865 831 308</p><p><em>"im lặng, làm và gáy"</em></p></div></div>
+    <div class="member"><img src="img/tv8.jpg"><div class="info"><h3>Đặng Kim Ngân</h3><p>Thư kí</p><p>Email: ngandk1408@gmail.com</p><p>SĐT: 0865 960 214</p></div></div>
+    <div class="member"><img src="img/tv3.jpg"><div class="info"><h3>Phan Thị Phương Thuỷ</h3><p>Thành viên</p><p>Email: phanthuy08@gmail.com</p><p>SĐT: 0904 225 281</p></div></div>
+    <div class="member"><img src="img/tv4.jpg"><div class="info"><h3>Nguyễn Kim Ngân</h3><p>Thành viên</p><p>Email: nguyenkimngan2008@gmail.com</p><p>SĐT: 0989 247 529</p></div></div>
+    <div class="member"><img src="img/tv5.jpg"><div class="info"><h3>Trần Nam Phong</h3><p>Thành viên</p><p>Email: phongtran21052008@gmail.com</p><p>SĐT: 0705 718 868</p></div></div>
+    <div class="member"><img src="img/tv6.jpg"><div class="info"><h3>Nguyễn Minh Trí</h3><p>Thành viên</p><p>Email: minhtring2008@gmail.com</p><p>SĐT: 0969 251 751</p></div></div>
+    <div class="member"><img src="img/tv7.jpg"><div class="info"><h3>Vũ Đức Việt</h3><p>Thành viên</p><p>Email: vuviet041008@gmail.com</p><p>SĐT: 0966 101 527</p></div></div>
+    <div class="member"><img src="img/tv10.jpg"><div class="info"><h3>Đoàn Nguyễn Thuỳ Trang</h3><p>Thành viên</p><p>Email: trang156hd@gmail.com</p><p>SĐT: 0989 019 208</p></div></div>
+</div>
+
+<footer>
+    © 2025 - Ngoc Dao's Group | Thiết kế bởi @Catter
+</footer>
+
+<div class="overlay" id="overlay"></div>
+
+<script>
+    const cards = document.querySelectorAll(".member");
+    const overlay = document.getElementById("overlay");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            const clone = card.cloneNode(true);
+            clone.classList.add("zoom-card");
+            overlay.innerHTML = "";
+            overlay.appendChild(clone);
+            overlay.classList.add("active");
+        });
+    });
+
+    overlay.addEventListener("click", () => {
+        overlay.classList.remove("active");
+    });
+</script>
+
+</body>
+</html>
