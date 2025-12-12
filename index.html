@@ -2,6 +2,11 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <script>
+        if (sessionStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
 
     <title>Giới thiệu thành viên nhóm</title>
 
