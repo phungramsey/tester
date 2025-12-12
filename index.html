@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-   <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
+    <script>
+        if (sessionStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
 
- 
     <title>Giới thiệu thành viên nhóm</title>
 
     <style>
@@ -27,8 +31,7 @@
             width: 100%;
             max-width: 1000px;
             margin: 25px auto 0;
-            position: relative;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 16/9;
             background: #000;
             border-radius: 14px;
             overflow: hidden;
@@ -99,10 +102,6 @@
             color: #1976d2;
         }
 
-        .member:nth-child(10) {
-            grid-column: 2 / 3;
-        }
-
         footer {
             text-align: center;
             padding: 22px;
@@ -129,66 +128,54 @@
             display: flex;
         }
 
+        /* POPUP NGANG */
         .zoom-card {
-            width: 380px;
+            width: 850px;
             background: white;
-            border-radius: 16px;
+            border-radius: 18px;
+            display: flex;
             overflow: hidden;
             animation: zoomIn 0.3s ease;
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
         }
 
-        .zoom-card img {
+        .zoom-left {
+            width: 45%;
+            background: #f3f8ff;
+            border-right: 2px solid #e3e8ef;
+        }
+
+        .zoom-left img {
             width: 100%;
-            height: 300px;
+            height: 100%;
             object-fit: cover;
         }
 
-        .zoom-card .info {
-            padding: 22px;
-            text-align: center;
+        .zoom-right {
+            width: 55%;
+            padding: 25px;
+        }
+
+        .zoom-right h2 {
+            color: #0d47a1;
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .zoom-right p {
+            font-size: 15px;
+            margin: 6px 0;
+        }
+
+        .zoom-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1976d2;
         }
 
         @keyframes zoomIn {
             from { transform: scale(0.6); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
-        }
-
-        @media (max-width: 900px) {
-            .container { grid-template-columns: repeat(2, 1fr); }
-            .member:nth-child(10) { grid-column: auto; }
-        }
-
-        @media (max-width: 600px) {
-            .container { grid-template-columns: 1fr; }
-        }
-
-        /* BẢNG THÔNG TIN */
-        table {
-            width: 90%;
-            max-width: 900px;
-            margin: 40px auto;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
-
-        table th, table td {
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            font-size: 15px;
-        }
-
-        table th {
-            background: #0d47a1;
-            color: white;
-            font-weight: 600;
-        }
-
-        table tr:nth-child(even) {
-            background: #f5f9ff;
         }
     </style>
 </head>
@@ -197,13 +184,13 @@
 
 <h1>GIỚI THIỆU THÀNH VIÊN NHÓM 5 LỚP 12M</h1>
 
-<div class="video-wrapper" id="videoBox">
+<div class="video-wrapper">
     <video controls>
         <source src="video/intro2.mp4" type="video/mp4">
     </video>
 </div>
 
-<!-- BẢNG 11 HÀNG - 3 CỘT -->
+<!-- BẢNG -->
 <table>
     <tr>
         <th>Họ và tên</th>
@@ -222,17 +209,21 @@
     <tr><td>Đoàn Nguyễn Thuỳ Trang</td><td>Thành viên</td><td>Hoàn thành tốt</td></tr>
 </table>
 
-<!-- DANH SÁCH THÀNH VIÊN -->
+<!-- CARD THÀNH VIÊN -->
 <div class="container">
+
     <div class="member"><img src="img/tv1.jpg"><div class="info"><h3>Đào Gia Bảo Ngọc</h3><p>Trưởng nhóm</p><p>Email: daogiabaongochd2008@gmail.com</p><p>SĐT: 0349 794 188</p></div></div>
     <div class="member"><img src="img/tv2.jpg"><div class="info"><h3>Bùi Mạnh Trường</h3><p>Phó nhóm</p><p>Email: bmt19102008@gmail.com</p><p>SĐT: 0979 981 652</p></div></div>
-    <div class="member"><img src="img/tv9.jpg"><div class="info"><h3>Phùng Ngọc Tuấn Tú</h3><p>Nhiếp ảnh & Thiết kế</p><p>Email: cattertu310308@gmail.com</p><p>SĐT: 0865 831 308</p><p><em>"im lặng, làm và gáy"</em></p></div></div>
+    <div class="member"><img src="img/tv9.jpg"><div class="info"><h3>Phùng Ngọc Tuấn Tú</h3><p>Nhiếp ảnh & Thiết kế</p><p>Email: cattertu310308@gmail.com</p><p>SĐT: 0865 831 308</p></div></div>
+
     <div class="member"><img src="img/tv8.jpg"><div class="info"><h3>Đặng Kim Ngân</h3><p>Thư kí</p><p>Email: ngandk1408@gmail.com</p><p>SĐT: 0865 960 214</p></div></div>
     <div class="member"><img src="img/tv3.jpg"><div class="info"><h3>Phan Thị Phương Thuỷ</h3><p>Thành viên</p><p>Email: phanthuy08@gmail.com</p><p>SĐT: 0904 225 281</p></div></div>
     <div class="member"><img src="img/tv4.jpg"><div class="info"><h3>Nguyễn Kim Ngân</h3><p>Thành viên</p><p>Email: nguyenkimngan2008@gmail.com</p><p>SĐT: 0989 247 529</p></div></div>
+
     <div class="member"><img src="img/tv5.jpg"><div class="info"><h3>Trần Nam Phong</h3><p>Thành viên</p><p>Email: phongtran21052008@gmail.com</p><p>SĐT: 0705 718 868</p></div></div>
     <div class="member"><img src="img/tv6.jpg"><div class="info"><h3>Nguyễn Minh Trí</h3><p>Thành viên</p><p>Email: minhtring2008@gmail.com</p><p>SĐT: 0969 251 751</p></div></div>
     <div class="member"><img src="img/tv7.jpg"><div class="info"><h3>Vũ Đức Việt</h3><p>Thành viên</p><p>Email: vuviet041008@gmail.com</p><p>SĐT: 0966 101 527</p></div></div>
+
     <div class="member"><img src="img/tv10.jpg"><div class="info"><h3>Đoàn Nguyễn Thuỳ Trang</h3><p>Thành viên</p><p>Email: trang156hd@gmail.com</p><p>SĐT: 0989 019 208</p></div></div>
 </div>
 
@@ -243,22 +234,101 @@
 <div class="overlay" id="overlay"></div>
 
 <script>
-    const cards = document.querySelectorAll(".member");
-    const overlay = document.getElementById("overlay");
+const cards = document.querySelectorAll(".member");
+const overlay = document.getElementById("overlay");
 
-    cards.forEach(card => {
-        card.addEventListener("click", () => {
-            const clone = card.cloneNode(true);
-            clone.classList.add("zoom-card");
-            overlay.innerHTML = "";
-            overlay.appendChild(clone);
-            overlay.classList.add("active");
-        });
-    });
+const extraInfo = {
+    "Đào Gia Bảo Ngọc": {
+        hobby: "Đọc sách, lãnh đạo nhóm",
+        subject: "Ngữ văn",
+        task: "Điều phối & quản lý toàn bộ nhóm"
+    },
+    "Bùi Mạnh Trường": {
+        hobby: "Chơi bóng rổ, nghiên cứu số liệu",
+        subject: "Toán",
+        task: "Phó nhóm, hỗ trợ điều hành"
+    },
+    "Phùng Ngọc Tuấn Tú": {
+        hobby: "Chụp ảnh, edit video, thiết kế",
+        subject: "Tin học",
+        task: "Nhiếp ảnh, quay dựng và thiết kế"
+    },
+    "Đặng Kim Ngân": {
+        hobby: "Viết nhật ký, soạn thảo",
+        subject: "Văn",
+        task: "Thư ký, tổng hợp & ghi chép"
+    },
+    "Phan Thị Phương Thuỷ": {
+        hobby: "Xem phim, đọc truyện",
+        subject: "Sinh học",
+        task: "Hỗ trợ chuẩn bị nội dung"
+    },
+    "Nguyễn Kim Ngân": {
+        hobby: "Nấu ăn, đọc manga",
+        subject: "Hóa học",
+        task: "Thành viên hỗ trợ"
+    },
+    "Trần Nam Phong": {
+        hobby: "Đá bóng, chơi game",
+        subject: "Tin học",
+        task: "Thành viên hỗ trợ"
+    },
+    "Nguyễn Minh Trí": {
+        hobby: "Nghe nhạc, chụp ảnh",
+        subject: "Sinh học",
+        task: "Hỗ trợ quay dựng & nội dung"
+    },
+    "Vũ Đức Việt": {
+        hobby: "Thể thao, đọc báo",
+        subject: "Toán",
+        task: "Thành viên hỗ trợ"
+    },
+    "Đoàn Nguyễn Thuỳ Trang": {
+        hobby: "Vẽ tranh, chụp ảnh",
+        subject: "Mỹ thuật",
+        task: "Hỗ trợ thiết kế & nội dung"
+    }
+};
 
-    overlay.addEventListener("click", () => {
-        overlay.classList.remove("active");
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+
+        const img = card.querySelector("img").src;
+        const name = card.querySelector("h3").innerText;
+        const role = card.querySelector("p:nth-child(2)").innerText;
+        const email = card.querySelector("p:nth-child(3)").innerText;
+        const phone = card.querySelector("p:nth-child(4)").innerText;
+
+        const more = extraInfo[name];
+
+        overlay.innerHTML = `
+            <div class="zoom-card">
+                <div class="zoom-left">
+                    <img src="${img}">
+                </div>
+                <div class="zoom-right">
+                    <h2>${name}</h2>
+                    <p class="zoom-title">${role}</p>
+
+                    <p><b>Email:</b> ${email}</p>
+                    <p><b>SĐT:</b> ${phone}</p>
+
+                    <hr style="margin: 15px 0;">
+
+                    <p><b>Sở thích:</b> ${more.hobby}</p>
+                    <p><b>Môn học yêu thích:</b> ${more.subject}</p>
+                    <p><b>Nhiệm vụ trong nhóm:</b> ${more.task}</p>
+                </div>
+            </div>
+        `;
+
+        overlay.classList.add("active");
     });
+});
+
+overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+});
 </script>
 
 </body>
