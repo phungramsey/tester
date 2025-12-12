@@ -2,11 +2,6 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <script>
-        if (sessionStorage.getItem("loggedIn") !== "true") {
-            window.location.href = "login.html";
-        }
-    </script>
 
     <title>Giới thiệu thành viên nhóm</title>
 
@@ -204,6 +199,19 @@
         @keyframes zoomIn {
             from { transform: scale(0.6); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Căn giữa card cuối cùng trên màn hình lớn */
+        @media (min-width: 901px) {
+            .member:last-child {
+                grid-column: 2 / 3;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .member:last-child {
+                grid-column: auto;
+            }
         }
     </style>
 </head>
