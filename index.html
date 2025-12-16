@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
 
-   
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-
-   
+    
+    <script>
+        if (sessionStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
     
     <title>Giới thiệu thành viên nhóm</title>
 
@@ -139,32 +142,111 @@
             font-size: 14px;
         }
 
-        /* ====== NÚT THAM GIA ====== */
-        .join-box {
-            display: flex;
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
             justify-content: center;
-            margin: 60px 0 30px;
+            align-items: center;
+            z-index: 9999;
         }
 
-        .join-box a {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 22px;
-            padding: 18px 42px;
-            background: linear-gradient(90deg, #1976d2, #0d47a1);
-            color: white;
-            text-decoration: none;
-            border-radius: 40px;
-            letter-spacing: 1px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-            transition: 0.3s;
+        .overlay.active {
+            display: flex;
         }
 
-        .join-box a:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 26px rgba(0,0,0,0.35);
-            background: linear-gradient(90deg, #0d47a1, #1976d2);
+       
+        .zoom-card {
+            width: 850px;
+            background: white;
+            border-radius: 18px;
+            display: flex;
+            overflow: hidden;
+            animation: zoomIn 0.3s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
         }
+
+        .zoom-left {
+            width: 45%;
+            background: #f3f8ff;
+            border-right: 2px solid #e3e8ef;
+        }
+
+        .zoom-left img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .zoom-right {
+            width: 55%;
+            padding: 25px;
+        }
+
+        .zoom-right h2 {
+            color: #0d47a1;
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .zoom-right p {
+            font-size: 15px;
+            margin: 6px 0;
+        }
+
+        .zoom-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1976d2;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.6); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        
+        @media (min-width: 901px) {
+            .member:last-child {
+                grid-column: 2 / 3;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .member:last-child {
+                grid-column: auto;
+            }
+        .join-box {
+    display: flex;
+    justify-content: center;
+    margin: 60px 0 30px;
+   }
+
+    .join-box a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    padding: 18px 42px;
+    background: linear-gradient(90deg, #1976d2, #0d47a1);
+    color: white;
+    text-decoration: none;
+    border-radius: 40px;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    transition: 0.3s;
+}
+
+.join-box a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+    background: linear-gradient(90deg, #0d47a1, #1976d2);
+}
+        }
+    
     </style>
 </head>
 
@@ -178,16 +260,152 @@
     </video>
 </div>
 
-<!-- ====== NÚT THAM GIA ====== -->
+
+<table>
+    <tr>
+        <th>Họ và tên</th>
+        <th>Nhiệm vụ</th>
+        <th>Trạng thái công việc</th>
+    </tr>
+    <tr><td>Đào Gia Bảo Ngọc</td><td>Điều phối & quản lý</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Bùi Mạnh Trường</td><td>Hỗ trợ điều hành</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Phùng Ngọc Tuấn Tú</td><td>Chụp ảnh, edit video, thiết kế</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Đặng Kim Ngân</td><td>Tổng hợp & ghi chép</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Phan Thị Phương Thuỷ</td><td>Hỗ trợ chuẩn bị nội dung</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Nguyễn Kim Ngân</td><td>Hỗ trợ tổng hợp thông tin</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Trần Nam Phong</td><td>Hỗ trợ tổng hợp thông tin</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Nguyễn Minh Trí</td><td>Hỗ trợ tổng hợp thông tin</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Vũ Đức Việt</td><td>Hỗ trợ tổng hợp thông tin</td><td>Hoàn thành tốt</td></tr>
+    <tr><td>Đoàn Nguyễn Thuỳ Trang</td><td>Hỗ trợ tổng hợp thông tin</td><td>Hoàn thành tốt</td></tr>
+</table>
+
+
+<div class="container">
+
+    <div class="member"><img src="img/tv1.jpg"><div class="info"><h3>Đào Gia Bảo Ngọc</h3><p>Trưởng nhóm</p><p>Email: daogiabaongochd2008@gmail.com</p><p>SĐT: 0349 794 188</p></div></div>
+    <div class="member"><img src="img/tv2.jpg"><div class="info"><h3>Bùi Mạnh Trường</h3><p>Phó nhóm</p><p>Email: bmt19102008@gmail.com</p><p>SĐT: 0979 981 652</p></div></div>
+    <div class="member"><img src="img/tv9.jpg"><div class="info"><h3>Phùng Ngọc Tuấn Tú</h3><p>Nhiếp ảnh & Thiết kế</p><p>Email: cattertu310308@gmail.com</p><p>SĐT: 0865 831 308</p></div></div>
+
+    <div class="member"><img src="img/tv8.jpg"><div class="info"><h3>Đặng Kim Ngân</h3><p>Thư kí</p><p>Email: ngandk1408@gmail.com</p><p>SĐT: 0865 960 214</p></div></div>
+    <div class="member"><img src="img/tv3.jpg"><div class="info"><h3>Phan Thị Phương Thuỷ</h3><p>Thành viên</p><p>Email: phanthuy08@gmail.com</p><p>SĐT: 0904 225 281</p></div></div>
+    <div class="member"><img src="img/tv4.jpg"><div class="info"><h3>Nguyễn Kim Ngân</h3><p>Thành viên</p><p>Email: nguyenkimngan2008@gmail.com</p><p>SĐT: 0989 247 529</p></div></div>
+
+    <div class="member"><img src="img/tv5.jpg"><div class="info"><h3>Trần Nam Phong</h3><p>Thành viên</p><p>Email: phongtran21052008@gmail.com</p><p>SĐT: 0705 718 868</p></div></div>
+    <div class="member"><img src="img/tv6.jpg"><div class="info"><h3>Nguyễn Minh Trí</h3><p>Thành viên</p><p>Email: minhtring2008@gmail.com</p><p>SĐT: 0969 251 751</p></div></div>
+    <div class="member"><img src="img/tv7.jpg"><div class="info"><h3>Vũ Đức Việt</h3><p>Thành viên</p><p>Email: vuviet041008@gmail.com</p><p>SĐT: 0966 101 527</p></div></div>
+
+    <div class="member"><img src="img/tv10.jpg"><div class="info"><h3>Đoàn Nguyễn Thuỳ Trang</h3><p>Thành viên</p><p>Email: trang156hd@gmail.com</p><p>SĐT: 0989 019 208</p></div></div>
+</div>
+
 <div class="join-box">
     <a href="https://forms.gle/DXWGjzK1KWgcgkeR6" target="_blank">
         THAM GIA CÙNG CHÚNG TỚ
     </a>
 </div>
-
+    
 <footer>
     © 2025 - Ngoc Dao's Group | Thiết kế bởi @Catter
 </footer>
+
+<div class="overlay" id="overlay"></div>
+
+<script>
+const cards = document.querySelectorAll(".member");
+const overlay = document.getElementById("overlay");
+
+const extraInfo = {
+    "Đào Gia Bảo Ngọc": {
+        hobby: "Đọc sách, lãnh đạo nhóm",
+        subject: "Ngữ Văn",
+        task: "Điều phối & quản lý toàn bộ nhóm"
+    },
+    "Bùi Mạnh Trường": {
+        hobby: "Chơi bóng rổ, nghiên cứu số liệu",
+        subject: "Toán",
+        task: "Phó nhóm, hỗ trợ điều hành"
+    },
+    "Phùng Ngọc Tuấn Tú": {
+        hobby: "Chụp ảnh, edit video, thiết kế",
+        subject: "Tiếng Anh",
+        task: "Nhiếp ảnh, quay dựng và thiết kế"
+    },
+    "Đặng Kim Ngân": {
+        hobby: "Viết nhật ký, soạn thảo",
+        subject: "Ngữ Văn",
+        task: "Thư ký, tổng hợp & ghi chép"
+    },
+    "Phan Thị Phương Thuỷ": {
+        hobby: "Xem phim, đọc truyện",
+        subject: "Sinh Học",
+        task: "Hỗ trợ chuẩn bị nội dung"
+    },
+    "Nguyễn Kim Ngân": {
+        hobby: "Nấu ăn, đọc manga",
+        subject: "Hóa Học",
+        task: "Thành viên hỗ trợ"
+    },
+    "Trần Nam Phong": {
+        hobby: "Đá bóng, chơi game",
+        subject: "Tin Học",
+        task: "Thành viên hỗ trợ"
+    },
+    "Nguyễn Minh Trí": {
+        hobby: "Nghe nhạc, chụp ảnh",
+        subject: "Hóa Học",
+        task: "Hỗ trợ quay dựng & nội dung"
+    },
+    "Vũ Đức Việt": {
+        hobby: "Thể thao, đọc báo",
+        subject: "Toán",
+        task: "Thành viên hỗ trợ"
+    },
+    "Đoàn Nguyễn Thuỳ Trang": {
+        hobby: "Ngủ",
+        subject: "Toán",
+        task: "Hỗ trợ tổng hợp nội dung"
+    }
+};
+
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+
+        const img = card.querySelector("img").src;
+        const name = card.querySelector("h3").innerText;
+        const role = card.querySelector("p:nth-child(2)").innerText;
+        const email = card.querySelector("p:nth-child(3)").innerText;
+        const phone = card.querySelector("p:nth-child(4)").innerText;
+
+        const more = extraInfo[name];
+
+        overlay.innerHTML = `
+            <div class="zoom-card">
+                <div class="zoom-left">
+                    <img src="${img}">
+                </div>
+                <div class="zoom-right">
+                    <h2>${name}</h2>
+                    <p class="zoom-title">${role}</p>
+
+                    <p><b>Email:</b> ${email}</p>
+                    <p><b>SĐT:</b> ${phone}</p>
+
+                    <hr style="margin: 15px 0;">
+
+                    <p><b>Sở thích:</b> ${more.hobby}</p>
+                    <p><b>Môn học yêu thích:</b> ${more.subject}</p>
+                    <p><b>Nhiệm vụ trong nhóm:</b> ${more.task}</p>
+                </div>
+            </div>
+        `;
+
+        overlay.classList.add("active");
+    });
+});
+
+overlay.addEventListener("click", () => {
+    overlay.classList.remove("active");
+});
+</script>
 
 </body>
 </html>
