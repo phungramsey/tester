@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-    
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+    <script>
+        if (sessionStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
     
     <title>Giới thiệu thành viên nhóm</title>
 
@@ -129,6 +133,34 @@
             color: #1976d2;
         }
 
+        /* CSS Mới thêm cho nút tham gia */
+        .join-container {
+            text-align: center;
+            margin: 60px 0 20px 0;
+        }
+
+        .btn-join {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            /* Dùng màu gradient cam-hồng để nổi bật, hoặc đổi lại xanh */
+            background: linear-gradient(90deg, #FF512F 0%, #DD2476 100%); 
+            padding: 18px 50px;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(221, 36, 118, 0.3);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .btn-join:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(221, 36, 118, 0.5);
+        }
+        /* Kết thúc CSS mới */
+
         footer {
             text-align: center;
             padding: 22px;
@@ -155,7 +187,7 @@
             display: flex;
         }
 
-       
+        
         .zoom-card {
             width: 850px;
             background: white;
@@ -216,34 +248,7 @@
             .member:last-child {
                 grid-column: auto;
             }
-            
-        .join-box {
-         display: flex;
-         justify-content: center;
-         margin: 60px 0 30px;
-   }
-
-         .join-box a {
-         font-family: 'Montserrat', sans-serif;
-         font-weight: 800;
-         font-size: 22px;
-         padding: 18px 42px;
-         background: linear-gradient(90deg, #1976d2, #0d47a1);
-         color: white;
-         text-decoration: none;
-         border-radius: 40px;
-         letter-spacing: 1px;
-         box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-         transition: 0.3s;
-   }
-
-         .join-box a:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 10px 26px rgba(0,0,0,0.35);
-          background: linear-gradient(90deg, #0d47a1, #1976d2);
-   }
         }
-    
     </style>
 </head>
 
@@ -294,12 +299,11 @@
     <div class="member"><img src="img/tv10.jpg"><div class="info"><h3>Đoàn Nguyễn Thuỳ Trang</h3><p>Thành viên</p><p>Email: trang156hd@gmail.com</p><p>SĐT: 0989 019 208</p></div></div>
 </div>
 
-<div class="join-box">
-    <a href="https://forms.gle/DXWGjzK1KWgcgkeR6" target="_blank">
+<div class="join-container">
+    <a href="https://forms.gle/DXWGjzK1KWgcgkeR6" target="_blank" class="btn-join">
         THAM GIA CÙNG CHÚNG TỚ
     </a>
 </div>
-    
 <footer>
     © 2025 - Ngoc Dao's Group | Thiết kế bởi @Catter
 </footer>
